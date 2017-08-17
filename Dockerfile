@@ -9,17 +9,18 @@ ENV GID 1000
 RUN apt-get update -q && \
     apt-get install -qy
 
-RUN apt-get install -y transmission transmission-cli transmission-daemon
+RUN apt-get install -y transmission transmission-cli transmission-daemon transmission-remote-cli lua5.3
 
 RUN groupadd -g $GID user
 RUN useradd --no-create-home -g user --uid $UID user
 
-COPY ./launch.bash /launch.bash
-RUN chmod 755 /launch.bash && chown user /launch.bash
+WORKDIR /torrents
 
-VOLUME /transmission-config
-VOLUME /movies
-VOLUME /torrents
+COPY ./launch.bash /launch.bash
+COPY ./movieSync.lua /movieSync.lua
+RUN chmod 755 /launch.bash /movieSync.lua && chown user /launch.bash /movieSync.lua
+
+VOLUME  /transmission-config /movies /torrents
 
 USER user
 
