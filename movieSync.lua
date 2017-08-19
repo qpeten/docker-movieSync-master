@@ -9,7 +9,9 @@
 
 moviesPath = '/movies'
 torrentPath = '/torrents'
-trackers = ' -t udp://tracker.coppersurfer.tk:6969 -t udp://tracker.leechers-paradise.org:6969 '
+trackers = ' -t udp://tracker.coppersurfer.tk:6969 -t udp://tracker.leechers-paradise.org:6969 -t udp://tracker.internetwarriors.net:1337 -t udp://exodus.desync.com:6969 -t udp://tracker.sktorrent.net:6969 -t udp://tracker.zer0day.to:1337 -t udp://tracker.pirateparty.gr:6969 -t udp://oscar.reyesleon.xyz:6969 -t udp://tracker.cyberia.is:6969 '
+
+
 TRip = 'localhost:9091'
 
 -- Function scandir from http://www.wellho.net/resources/ex.php4?item=u112/dlisting
