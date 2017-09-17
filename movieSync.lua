@@ -65,7 +65,7 @@ function isAValidFolder(movieName)
 end
 
 function torrentAlreadyExists(folder)
-    return os.capture('transmission-remote ' .. TRip .. ' -l | grep ' .. "'" .. folder .. "' | wc -l") == '1'
+    return os.capture('transmission-remote ' .. TRip .. ' -l | grep ' .. '"' .. folder .. '" | wc -l') == '1'
 end
 
 --
@@ -83,7 +83,7 @@ os.execute('sleep 15') --Leave some time for transmission to get up and running
 for i, folder in pairs(moviesList) do
    if isAValidFolder(folder) and not torrentAlreadyExists(folder) then
       print('Creating .torrent file for : ' .. folder)
-      os.execute('transmission-create ' .. trackers .. "'" .. moviesPath .. '/' .. folder .. "'")
-      os.execute('transmission-remote ' .. TRip .. ' -a ' .. "'" .. folder .. "'" .. '.torrent')
+      os.execute('transmission-create ' .. trackers .. '"' .. moviesPath .. '/' .. folder .. '"')
+      os.execute('transmission-remote ' .. TRip .. ' -a ' .. '"' .. folder .. '"' .. '.torrent')
    end
 end
